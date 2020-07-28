@@ -1,4 +1,4 @@
-# COMP9417 - Final Project
+# COMP9417 - Toxic Comment Classification
 Mimi Tran - z5158339\
 Karim Saad - z5209523
 
