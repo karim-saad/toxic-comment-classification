@@ -6,8 +6,8 @@ Karim Saad - z5209523
 The project we have chosen to undertake is Toxic Comment Classification. This is a challenge posted by Jigsaw/Conversation AI on [Kaggle](https://www.kaggle.com/c/jigsaw-toxic-comment-classification-challenge).
 
 # Instructions
-Run the following command:
-
+Run the code with the whichever command is appropriate to your system:
+    python toxic.py
     python3 toxic.py
 
 This will unzip all datasets, and run our implemented analysis.
