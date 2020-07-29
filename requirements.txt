@@ -1,2 +1,4 @@
 os
 zipfile
+pandas
+numpy

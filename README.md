@@ -11,3 +11,9 @@ Run the following command:
     python3 toxic.py
 
 This will unzip all datasets, and run our implemented analysis.
+
+# References
+The following Kaggle notebooks are super helpful:
+
+- [Naive Bayes - Support Vector Machine](https://www.kaggle.com/jhoward/nb-svm-strong-linear-baseline)
+- [Exploratory Data Analysis](https://www.kaggle.com/jagangupta/stop-the-s-toxic-comments-eda)
