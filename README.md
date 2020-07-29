@@ -1,4 +1,6 @@
 # COMP9417 - Toxic Comment Classification
+
+## Authors
 Mimi Tran - z5158339\
 Karim Saad - z5209523
 
