@@ -26,8 +26,11 @@ def unzip_files():
 def csv_to_dataframe():
     train_filename = os.path.join(cwd, 'data', 'train.csv')
     train = pd.read_csv(train_filename)
+
     test_filename = os.path.join(cwd, 'data', 'test.csv')
     test = pd.read_csv(test_filename)
+
     test_labels_filename = os.path.join(cwd, 'data', 'test_labels.csv')
     test_labels = pd.read_csv(test_labels_filename)
+
     return train, test, test_labels
