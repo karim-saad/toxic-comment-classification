@@ -16,11 +16,11 @@ This will unzip all datasets, and run our implemented analysis.
 # References
 The following Kaggle notebooks are super helpful:
 
-- [Naive Bayes - Support Vector Machine](https://www.kaggle.com/jhoward/nb-svm-strong-linear-baseline)
+- [**Naive Bayes - Support Vector Machine**](https://www.kaggle.com/jhoward/nb-svm-strong-linear-baseline)
     - This notebook is very concise
     - Mainly deals with the actual implementation
     - Builds the model and prepares the submission file
-- [Exploratory Data Analysis](https://www.kaggle.com/jagangupta/stop-the-s-toxic-comments-eda)
+- [**Exploratory Data Analysis**](https://www.kaggle.com/jagangupta/stop-the-s-toxic-comments-eda)
     - This notebook is much more lengthy
     - Explores the dataset, with some preparation
     - Very useful to justify our results
