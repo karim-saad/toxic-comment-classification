@@ -1,8 +1,8 @@
-from unzip import unzip_files
+from environment import environment
 from explore import explore
 
 if __name__ == '__main__':
-    unzip_files()
+    train, test, test_labels = environment()
     print('''
      _________________
     < My name is Mimi! >
@@ -13,4 +13,4 @@ if __name__ == '__main__':
                     ||----w |
                     ||     ||
     ''')
-    explore()
+    explore(train, test, test_labels)
