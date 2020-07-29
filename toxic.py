@@ -1,4 +1,5 @@
 from unzip import unzip_files
+from explore import explore
 
 if __name__ == '__main__':
     unzip_files()
@@ -12,3 +13,4 @@ if __name__ == '__main__':
                     ||----w |
                     ||     ||
     ''')
+    explore()
