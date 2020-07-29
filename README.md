@@ -3,7 +3,7 @@ Mimi Tran - z5158339\
 Karim Saad - z5209523
 
 # Project Description
-The project we have chosen to undertake is Toxic Comment Classification. This is a challenge posted by Jigsaw/Conversation AI on [Kaggle](https://www.kaggle.com/c/jigsaw-toxic-comment-classification-challenge).
+The project we have chosen to undertake is Toxic Comment Classification. This is a challenge posted by Jigsaw/Conversation AI on [**Kaggle**](https://www.kaggle.com/c/jigsaw-toxic-comment-classification-challenge).
 
 # Instructions
 Run the code with the whichever command is appropriate to your system:
@@ -26,4 +26,4 @@ The following Kaggle notebooks are super helpful:
     - Very useful to justify our results
 
 # Report
-The report is currently located [here](https://docs.google.com/document/d/1sUgoUPmcV7uHLe_XSr5kLB20RkgOK5ALO-yAvKfBWUk/edit?usp=sharing) on Google Drive.
+The report is currently located [**here**](https://docs.google.com/document/d/1sUgoUPmcV7uHLe_XSr5kLB20RkgOK5ALO-yAvKfBWUk/edit?usp=sharing) on Google Drive.
