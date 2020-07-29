@@ -7,6 +7,7 @@ The project we have chosen to undertake is Toxic Comment Classification. This is
 
 # Instructions
 Run the code with the whichever command is appropriate to your system:
+
     python toxic.py
     python3 toxic.py
 
