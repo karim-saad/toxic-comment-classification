@@ -39,8 +39,24 @@ def explore(train, test, test_labels):
     print()
 
     # add 'non_toxic' tag to any comments that don't contain any toxicity
+    print('Applying \'non-toxic\' tag to all clean comments')
     print('NOTE: This step may take a while...')
     train['non_toxic'] = train.apply(
         lambda row: 1 if row[2:].sum() == 0 else 0, axis=1)
     print('{} comments do not contain any toxicity'.format(
         train['non_toxic'].sum()))
+
+    # plotting the number of comments per classification
+    x = train.iloc[:, 2:].sum()
+    plt.figure(figsize=(8, 4))
+    ax = sns.barplot(x.index, x.values, alpha=0.8)
+    plt.title('Number of Comments per Class')
+    plt.xlabel('Classification of Comment', fontsize=12)
+    plt.ylabel('Number of Occurences', fontsize=12)
+    rects = ax.patches
+    labels = x.values
+    for rect, label in zip(rects, labels):
+        height = rect.get_height()
+        ax.text(rect.get_x()+rect.get_width()/2, height +
+                5, label, ha='center', va='bottom')
+    plt.show()
