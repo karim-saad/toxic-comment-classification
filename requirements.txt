@@ -2,3 +2,5 @@ os
 zipfile
 pandas
 numpy
+matplotlib
+seaborn
