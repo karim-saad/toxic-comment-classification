@@ -38,3 +38,11 @@ The following Kaggle notebooks are super helpful:
 
 ## Report
 The report is currently located [**here**](https://docs.google.com/document/d/1sUgoUPmcV7uHLe_XSr5kLB20RkgOK5ALO-yAvKfBWUk/edit?usp=sharing) on Google Drive.
+
+## TO DO
+- Exploratory Data Analysis
+- Preprocessing + feature engineering
+- Basic Keras model
+- Basic logistic regression
+- NB-SVM model
+- Improve on NB-SVM model

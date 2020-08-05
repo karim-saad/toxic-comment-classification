@@ -133,3 +133,12 @@ def explore(train, test, test_labels):
     wordcloud.generate(' '.join(text))
     wordcloud.to_file('appendix/insult_wordcloud.png')
     print('Word cloud of toxic comments is now found at appendix/insult_wordcloud.png')
+
+    # identity_hate toxic comments
+    identity_hate = train[train.identity_hate == 1]
+    text = identity_hate.comment_text.values
+    wordcloud = WordCloud(background_color='black',
+                          max_words=2000, stopwords=stopwords)
+    wordcloud.generate(' '.join(text))
+    wordcloud.to_file('appendix/identity_hate_wordcloud.png')
+    print('Word cloud of toxic comments is now found at appendix/identity_hate_wordcloud.png')
