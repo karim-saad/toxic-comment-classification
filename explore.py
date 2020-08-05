@@ -49,7 +49,7 @@ def explore(train, test, test_labels):
     # plotting the number of comments per classification
     x = train.iloc[:, 2:].sum()
     plt.figure(figsize=(8, 4))
-    ax = sns.barplot(x.index, x.values, alpha=0.8)
+    ax = sns.barplot(x.index, x.values)
     plt.title('Number of Comments per Class')
     plt.xlabel('Classification of Comment', fontsize=12)
     plt.ylabel('Number of Occurences', fontsize=12)
@@ -59,4 +59,21 @@ def explore(train, test, test_labels):
         height = rect.get_height()
         ax.text(rect.get_x()+rect.get_width()/2, height +
                 5, label, ha='center', va='bottom')
-    plt.show()
+    plt.savefig('appendix/comments_per_class.png')
+    plt.close()
+    print('Bar graph showing the number of comments per class is now found at appendix/comments_per_class.png')
+
+    # plotting the number of comments with multiple tags
+    x = train.iloc[:, 2:].sum(axis=1).value_counts()
+    plt.figure(figsize=(8, 4))
+    ax = sns.barplot(x.index, x.values, color='m')
+    plt.title('Number of Comments with Multiple Tags')
+    plt.xlabel('Number of Tags')
+    plt.ylabel('Number of Occurences')
+    rects = ax.patches
+    labels = x.values
+    for rect, label in zip(rects, labels):
+        height = rect.get_height()
+        ax.text(rect.get_x()+rect.get_width()/2, height +
+                5, label, ha='center', va='bottom')
+    plt.savefig('appendix/comments_with_multiple_tags.png')
