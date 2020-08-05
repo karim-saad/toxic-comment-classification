@@ -15,7 +15,7 @@ Run the code with the whichever command is appropriate to your system:
 
 This will unzip all datasets, and run our implemented analysis.
 
-**Note**: Running this file will require a graphical interface. If you are running on WSL, please install [Xming](https://sourceforge.net/projects/xming/), or a similar program.
+**Note**: Running this file will require a graphical interface. If you are running on WSL, please install [**Xming**](https://sourceforge.net/projects/xming/), or a similar program.
 
 ## References
 The following Kaggle notebooks are super helpful:
