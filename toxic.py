@@ -5,6 +5,6 @@ from basic_logistic import basic_logistic
 
 if __name__ == '__main__':
     train, test, test_labels = environment()
-    #explore(train, test)
+    explore(train, test)
     #basic_keras(train, test, test_labels)
     basic_logistic(train, test, test_labels)
