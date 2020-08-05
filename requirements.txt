@@ -6,3 +6,6 @@ matplotlib
 seaborn
 wordcloud
 keras
+tensorflow
+sklearn
+scipy

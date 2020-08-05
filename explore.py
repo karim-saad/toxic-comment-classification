@@ -7,19 +7,17 @@ from wordcloud import WordCloud, STOPWORDS
 from PIL import Image
 
 
-def explore(train, test, test_labels):
+def explore(train, test):
     '''Conducts an exploratory data analysis of the provided data
 
     Parameters:
     - train (pd.DataFrame): training dataset
     - test (pd.DataFrame): testing dataset
-    - test_labels (pd.DataFrame): labels for testing dataset
     '''
 
     # visualise the train, test and test_label data
     print(train.head(), '\n')
     print(test.head(), '\n')
-    print(test_labels.head(), '\n')
 
     # analyse the train test proportion
     train_size = train.shape[0]
@@ -116,7 +114,16 @@ def explore(train, test, test_labels):
     wordcloud.to_file('appendix/severe_toxic_wordcloud.png')
     print('Word cloud of toxic comments is now found at appendix/severe_toxic_wordcloud.png')
 
-    # threat toxic comments
+    # obscene comments
+    obscene = train[train.obscene == 1]
+    text = obscene.comment_text.values
+    wordcloud = WordCloud(background_color='black',
+                          max_words=2000, stopwords=stopwords)
+    wordcloud.generate(' '.join(text))
+    wordcloud.to_file('appendix/obscene_wordcloud.png')
+    print('Word cloud of toxic comments is now found at appendix/obscene_wordcloud.png')
+
+    # threat comments
     threat = train[train.threat == 1]
     text = threat.comment_text.values
     wordcloud = WordCloud(background_color='black',
@@ -125,7 +132,7 @@ def explore(train, test, test_labels):
     wordcloud.to_file('appendix/threat_wordcloud.png')
     print('Word cloud of toxic comments is now found at appendix/threat_wordcloud.png')
 
-    # insult toxic comments
+    # insult comments
     insult = train[train.insult == 1]
     text = insult.comment_text.values
     wordcloud = WordCloud(background_color='black',
@@ -134,7 +141,7 @@ def explore(train, test, test_labels):
     wordcloud.to_file('appendix/insult_wordcloud.png')
     print('Word cloud of toxic comments is now found at appendix/insult_wordcloud.png')
 
-    # identity_hate toxic comments
+    # identity hate comments
     identity_hate = train[train.identity_hate == 1]
     text = identity_hate.comment_text.values
     wordcloud = WordCloud(background_color='black',

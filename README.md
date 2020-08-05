@@ -41,7 +41,7 @@ The report is currently located [**here**](https://docs.google.com/document/d/1s
 
 ## TO DO
 - Exploratory Data Analysis
-- Preprocessing + feature engineering
+- Preprocessing + Feature engineering
 - Basic Keras model
 - Basic logistic regression
 - NB-SVM model
