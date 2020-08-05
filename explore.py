@@ -1,7 +1,10 @@
 import pandas as pd
+import numpy as np
 import os
 import matplotlib.pyplot as plt
 import seaborn as sns
+from wordcloud import WordCloud, STOPWORDS
+from PIL import Image
 
 
 def explore(train, test, test_labels):
@@ -43,7 +46,7 @@ def explore(train, test, test_labels):
     print('NOTE: This step may take a while...')
     train['non_toxic'] = train.apply(
         lambda row: 1 if row[2:].sum() == 0 else 0, axis=1)
-    print('{} comments do not contain any toxicity'.format(
+    print('{} comments do not contain any toxicity\n'.format(
         train['non_toxic'].sum()))
 
     # plotting the number of comments per classification
@@ -61,7 +64,7 @@ def explore(train, test, test_labels):
                 5, label, ha='center', va='bottom')
     plt.savefig('appendix/comments_per_class.png')
     plt.close()
-    print('Bar graph showing the number of comments per class is now found at appendix/comments_per_class.png')
+    print('Bar graph showing the number of comments per class is now found at appendix/comments_per_class.png\n')
 
     # plotting the number of comments with multiple tags
     x = train.iloc[:, 2:].sum(axis=1).value_counts()
@@ -77,3 +80,34 @@ def explore(train, test, test_labels):
         ax.text(rect.get_x()+rect.get_width()/2, height +
                 5, label, ha='center', va='bottom')
     plt.savefig('appendix/comments_with_multiple_tags.png')
+    plt.close()
+    print('Bar graph showing the number of tags per comment is now found at appendix/comments_with_multiple_tags.png\n')
+
+    # heatmap showing correlation between toxicity tags
+    # includes only toxic comments (no clean comments)
+    toxic_df = train.iloc[:, 2:-1]
+    toxic_corr = toxic_df.corr()
+    plt.figure(figsize=(10, 8))
+    sns.heatmap(toxic_corr, xticklabels=toxic_corr.columns.values,
+                yticklabels=toxic_corr.columns.values, annot=True, )
+    plt.savefig('appendix/toxic_correlation_heatmap.png')
+    plt.close()
+    print('Heatmap showing the correlation between toxicity tags is now found at appendix/toxic_correlation_heatmap.png\n')
+
+    # word cloud for different types of toxic comments
+    # https://www.datacamp.com/community/tutorials/wordcloud-python
+
+    toxic = train[train.toxic == 1]
+    text = toxic.comment_text.values
+    stopwords = set(STOPWORDS)
+    wordcloud = WordCloud(background_color='black',
+                          max_words=4000, stopwords=stopwords)
+    wordcloud.generate(' '.join(text))
+    wordcloud.to_file('appendix/toxic_wordcloud.png')
+
+
+def transform_format(val):
+    if val == 0:
+        return 255
+    else:
+        return val
