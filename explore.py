@@ -101,13 +101,6 @@ def explore(train, test, test_labels):
     text = toxic.comment_text.values
     stopwords = set(STOPWORDS)
     wordcloud = WordCloud(background_color='black',
-                          max_words=4000, stopwords=stopwords)
+                          max_words=2000, stopwords=stopwords)
     wordcloud.generate(' '.join(text))
     wordcloud.to_file('appendix/toxic_wordcloud.png')
-
-
-def transform_format(val):
-    if val == 0:
-        return 255
-    else:
-        return val
