@@ -17,7 +17,8 @@ def environment():
     '''
 
     unzip_files()
-    os.mkdir('appendix')
+    if not os.path.isdir('appendix'):
+        os.mkdir('appendix')
     return csv_to_dataframe()
 
 

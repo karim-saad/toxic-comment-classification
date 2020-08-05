@@ -8,13 +8,13 @@ from PIL import Image
 
 
 def explore(train, test, test_labels):
-    """Conducts an exploratory data analysis of the provided data
+    '''Conducts an exploratory data analysis of the provided data
 
     Parameters:
     - train (pd.DataFrame): training dataset
     - test (pd.DataFrame): testing dataset
     - test_labels (pd.DataFrame): labels for testing dataset
-    """
+    '''
 
     # visualise the train, test and test_label data
     print(train.head(), '\n')
@@ -64,7 +64,7 @@ def explore(train, test, test_labels):
                 5, label, ha='center', va='bottom')
     plt.savefig('appendix/comments_per_class.png')
     plt.close()
-    print('Bar graph showing the number of comments per class is now found at appendix/comments_per_class.png\n')
+    print('Bar graph showing the number of comments per class is now found at appendix/comments_per_class.png')
 
     # plotting the number of comments with multiple tags
     x = train.iloc[:, 2:].sum(axis=1).value_counts()
@@ -81,7 +81,7 @@ def explore(train, test, test_labels):
                 5, label, ha='center', va='bottom')
     plt.savefig('appendix/comments_with_multiple_tags.png')
     plt.close()
-    print('Bar graph showing the number of tags per comment is now found at appendix/comments_with_multiple_tags.png\n')
+    print('Bar graph showing the number of tags per comment is now found at appendix/comments_with_multiple_tags.png')
 
     # heatmap showing correlation between toxicity tags
     # includes only toxic comments (no clean comments)
@@ -94,9 +94,10 @@ def explore(train, test, test_labels):
     plt.close()
     print('Heatmap showing the correlation between toxicity tags is now found at appendix/toxic_correlation_heatmap.png\n')
 
-    # word cloud for different types of toxic comments
+    # word cloud for different types of comments
     # https://www.datacamp.com/community/tutorials/wordcloud-python
 
+    # toxic comments
     toxic = train[train.toxic == 1]
     text = toxic.comment_text.values
     stopwords = set(STOPWORDS)
@@ -104,3 +105,31 @@ def explore(train, test, test_labels):
                           max_words=2000, stopwords=stopwords)
     wordcloud.generate(' '.join(text))
     wordcloud.to_file('appendix/toxic_wordcloud.png')
+    print('Word cloud of toxic comments is now found at appendix/toxic_wordcloud.png')
+
+    # severe toxic comments
+    severe_toxic = train[train.severe_toxic == 1]
+    text = severe_toxic.comment_text.values
+    wordcloud = WordCloud(background_color='black',
+                          max_words=2000, stopwords=stopwords)
+    wordcloud.generate(' '.join(text))
+    wordcloud.to_file('appendix/severe_toxic_wordcloud.png')
+    print('Word cloud of toxic comments is now found at appendix/severe_toxic_wordcloud.png')
+
+    # threat toxic comments
+    threat = train[train.threat == 1]
+    text = threat.comment_text.values
+    wordcloud = WordCloud(background_color='black',
+                          max_words=2000, stopwords=stopwords)
+    wordcloud.generate(' '.join(text))
+    wordcloud.to_file('appendix/threat_wordcloud.png')
+    print('Word cloud of toxic comments is now found at appendix/threat_wordcloud.png')
+
+    # insult toxic comments
+    insult = train[train.insult == 1]
+    text = insult.comment_text.values
+    wordcloud = WordCloud(background_color='black',
+                          max_words=2000, stopwords=stopwords)
+    wordcloud.generate(' '.join(text))
+    wordcloud.to_file('appendix/insult_wordcloud.png')
+    print('Word cloud of toxic comments is now found at appendix/insult_wordcloud.png')
