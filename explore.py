@@ -4,7 +4,6 @@ import os
 import matplotlib.pyplot as plt
 import seaborn as sns
 from wordcloud import WordCloud, STOPWORDS
-from PIL import Image
 
 
 def explore(train, test):

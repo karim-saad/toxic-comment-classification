@@ -1,4 +1,5 @@
-from keras.preprocessing.text import Tokenizer
+#from keras.preprocessing.text import Tokenizer
+from keras_preprocessing.text import Tokenizer
 
 
 def basic_keras(train, test, test_labels):

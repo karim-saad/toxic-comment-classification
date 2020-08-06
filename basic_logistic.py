@@ -27,7 +27,6 @@ def basic_logistic(train, test, test_labels):
         sublinear_tf=True,
         strip_accents='unicode',
         analyzer='char',
-        stop_words='english',
         ngram_range=(2, 6),
         max_features=50000
     )
