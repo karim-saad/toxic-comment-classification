@@ -28,6 +28,7 @@ The following Kaggle notebooks are super helpful:
     - This notebook is much more lengthy
     - Explores the dataset, with some preparation
     - Very useful to justify our results
+    - Also includes feature engineering
 - [**Tackling Toxic using Keras**](https://www.kaggle.com/sbongo/for-beginners-tackling-toxic-using-keras)
     - This notebook is also quite lengthy
     - It goes through the solution using Keras and Tensorflow
@@ -35,6 +36,9 @@ The following Kaggle notebooks are super helpful:
 - [**Logistic Regression**](https://www.kaggle.com/tunguz/logistic-regression-with-words-and-char-n-grams)
     - This notebook is very concise
     - Purely just code for the submission
+- [**Improved LSTM Baseline**](https://www.kaggle.com/jhoward/improved-lstm-baseline-glove-dropout)
+    - This notebook is made by the same user as **NB-SVM model**
+    - Very similar to **Keras** model
 
 ## Report
 The report is currently located [**here**](https://docs.google.com/document/d/1sUgoUPmcV7uHLe_XSr5kLB20RkgOK5ALO-yAvKfBWUk/edit?usp=sharing) on Google Drive.
