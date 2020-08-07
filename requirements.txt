@@ -6,6 +6,7 @@ matplotlib
 seaborn
 wordcloud
 keras
+keras_preprocessing
 tensorflow
 sklearn
 scipy
