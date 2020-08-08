@@ -35,11 +35,7 @@ def keras_epochs_lower(train, test):
     model = Model(inputs=input_layer, outputs=x)
     model.compile(loss='binary_crossentropy',
                   optimizer='adam', metrics='accuracy')
-
-    batch_size = 32
-    epochs = 2
-    model.fit(x_train, y, batch_size=batch_size,
-              epochs=epochs, validation_split=0.1)
+    model.fit(x_train, y, batch_size=32, epochs=1, validation_split=0.1)
 
     loss, accuracy = model.evaluate(
         x_train, y, batch_size=batch_size, verbose=1)

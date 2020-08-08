@@ -35,14 +35,10 @@ def keras_batch_higher(train, test):
     model = Model(inputs=input_layer, outputs=x)
     model.compile(loss='binary_crossentropy',
                   optimizer='adam', metrics='accuracy')
-
-    batch_size = 64
-    epochs = 2
-    model.fit(x_train, y, batch_size=batch_size,
-              epochs=epochs, validation_split=0.1)
+    model.fit(x_train, y, batch_size=64, epochs=2, validation_split=0.1)
 
     loss, accuracy = model.evaluate(
-        x_train, y, batch_size=batch_size, verbose=1)
+        x_train, y, batch_size=64, verbose=1)
     model.save('models/batch_higher_model')
     print(f'Loss is {loss}')
     print(f'Accuracy is {accuracy}')
