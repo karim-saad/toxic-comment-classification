@@ -34,7 +34,7 @@ def nb_svm(train, test):
         model, log_count_ratio = nblr(x, train[class_name])
         print(np.mean(cross_val_score(model, x, train[class_name])))
         preds[:, count] = model.predict_proba(
-            np.dot(x_test, log_count_ratio))[:, 1]
+            x_test.multiply(log_count_ratio))[:, 1]
 
 
 def tokenize(s):
@@ -63,5 +63,5 @@ def nblr(x, y):
     y = y.values
     log_count_ratio = np.log(pr(x, y, 1) / pr(x, y, 0))
     model = LogisticRegression(C=4, max_iter=500)
-    x_nb = np.dot(x, log_count_ratio)
+    x_nb = x.multiply(log_count_ratio)
     return model.fit(x_nb, y), log_count_ratio
