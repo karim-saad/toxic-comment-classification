@@ -12,6 +12,9 @@ from keras_bidirectional import keras_bidirectional
 
 if __name__ == '__main__':
     train, test, test_labels = environment()
+    keras_validation_higher(train, test)
+    keras_validation_lower(train, test)
+    keras_bidirectional(train, test)
 
     while(option is not 'end'):
         print('\nOPTIONS')
