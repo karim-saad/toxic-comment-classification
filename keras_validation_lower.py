@@ -9,7 +9,7 @@ from keras import initializers, regularizers, constraints, optimizers, layers
 def keras_validation_lower(train, test):
     print('LSTM Model with a lower validation split')
 
-    saved = input('Would you like to use a pretrained model?')
+    saved = input('Would you like to use a pretrained model? ')
     print('NOTE: If a model does not exist, a new model will be trained.')
 
     if ((saved is 'yes' or saved is 'Yes' or saved is 'y' or saved is 'YES') and os.path.isfile('models/validation_lower_model')):

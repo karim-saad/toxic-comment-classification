@@ -10,7 +10,7 @@ from keras import initializers, regularizers, constraints, optimizers, layers
 def basic_keras(train, test):
     print('Basic LSTM Model (Standard Parameters)')
 
-    saved = input('Would you like to use a pretrained model?')
+    saved = input('Would you like to use a pretrained model? ')
     print('NOTE: If a model does not exist, a new model will be trained.')
 
     if ((saved is 'yes' or saved is 'Yes' or saved is 'y' or saved is 'YES') and os.path.isfile('models/basic_model')):

@@ -9,7 +9,7 @@ from keras import initializers, regularizers, constraints, optimizers, layers
 def keras_bidirectional(train, test):
     print('Bidirectional LSTM Model')
 
-    saved = input('Would you like to use a pretrained model?')
+    saved = input('Would you like to use a pretrained model? ')
     print('NOTE: If a model does not exist, a new model will be trained.')
 
     if ((saved is 'yes' or saved is 'Yes' or saved is 'y' or saved is 'YES') and os.path.isfile('models/bidirectional_model')):
@@ -31,7 +31,8 @@ def keras_bidirectional(train, test):
 
         embedding_size = 128
         x = Embedding(max_features, embedding_size)(input_layer)
-        x = Bidirectional(LSTM(60, return_sequences=True, name='lstm_layer'))(x)
+        x = Bidirectional(
+            LSTM(60, return_sequences=True, name='lstm_layer'))(x)
         x = GlobalMaxPool1D()(x)
         x = Dropout(0.1)(x)
         x = Dense(50, activation='relu')(x)
@@ -40,7 +41,7 @@ def keras_bidirectional(train, test):
 
         model = Model(inputs=input_layer, outputs=x)
         model.compile(loss='binary_crossentropy',
-                    optimizer='adam', metrics='accuracy')
+                      optimizer='adam', metrics='accuracy')
         model.fit(x_train, y, batch_size=32, epochs=2, validation_split=0.1)
         model.save('models/bidirectional_model')
 
