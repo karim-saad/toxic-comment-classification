@@ -1,4 +1,5 @@
 import pandas as pd
+import os
 from keras_preprocessing.text import Tokenizer
 from keras_preprocessing.sequence import pad_sequences
 from keras.layers import Dense, Input, LSTM, Embedding, Dropout, Activation, GlobalMaxPool1D
@@ -9,37 +10,43 @@ from keras import initializers, regularizers, constraints, optimizers, layers
 def keras_batch_higher(train, test):
     print('LSTM Model with a higher batch size')
 
-    classes = list(train.columns)[2:]
-    y = train[classes].values
+    saved = input('Would you like to use a pretrained model?')
+    print('NOTE: If a model does not exist, a new model will be trained.')
 
-    max_features = 2000
-    tokenizer = Tokenizer(num_words=max_features)
-    tokenizer.fit_on_texts(list(train['comment_text']))
-    tokenized_train = tokenizer.texts_to_sequences(train['comment_text'])
-    tokenized_test = tokenizer.texts_to_sequences(test['comment_text'])
+    if ((saved is 'yes' or saved is 'Yes' or saved is 'y' or saved is 'YES') and os.path.isfile('models/batch_higher_model')):
+        model = load_model('models/batch_higher_model')
+    else:
+        classes = list(train.columns)[2:]
+        y = train[classes].values
 
-    max_length = 200
-    x_train = pad_sequences(tokenized_train, maxlen=max_length)
-    x_test = pad_sequences(tokenized_test, maxlen=max_length)
-    input_layer = Input(shape=(max_length, ))
+        max_features = 2000
+        tokenizer = Tokenizer(num_words=max_features)
+        tokenizer.fit_on_texts(list(train['comment_text']))
+        tokenized_train = tokenizer.texts_to_sequences(train['comment_text'])
+        tokenized_test = tokenizer.texts_to_sequences(test['comment_text'])
 
-    embedding_size = 128
-    x = Embedding(max_features, embedding_size)(input_layer)
-    x = LSTM(60, return_sequences=True, name='lstm_layer')(x)
-    x = GlobalMaxPool1D()(x)
-    x = Dropout(0.1)(x)
-    x = Dense(50, activation='relu')(x)
-    x = Dropout(0.1)(x)
-    x = Dense(6, activation='sigmoid')(x)
+        max_length = 200
+        x_train = pad_sequences(tokenized_train, maxlen=max_length)
+        x_test = pad_sequences(tokenized_test, maxlen=max_length)
+        input_layer = Input(shape=(max_length, ))
 
-    model = Model(inputs=input_layer, outputs=x)
-    model.compile(loss='binary_crossentropy',
-                  optimizer='adam', metrics='accuracy')
-    model.fit(x_train, y, batch_size=64, epochs=2, validation_split=0.1)
+        embedding_size = 128
+        x = Embedding(max_features, embedding_size)(input_layer)
+        x = LSTM(60, return_sequences=True, name='lstm_layer')(x)
+        x = GlobalMaxPool1D()(x)
+        x = Dropout(0.1)(x)
+        x = Dense(50, activation='relu')(x)
+        x = Dropout(0.1)(x)
+        x = Dense(6, activation='sigmoid')(x)
+
+        model = Model(inputs=input_layer, outputs=x)
+        model.compile(loss='binary_crossentropy',
+                      optimizer='adam', metrics='accuracy')
+        model.fit(x_train, y, batch_size=64, epochs=2, validation_split=0.1)
+        model.save('models/batch_higher_model')
 
     loss, accuracy = model.evaluate(
         x_train, y, batch_size=64, verbose=1)
-    model.save('models/batch_higher_model')
     print(f'Loss is {loss}')
     print(f'Accuracy is {accuracy}')
 
