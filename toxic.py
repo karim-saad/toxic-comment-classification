@@ -25,7 +25,7 @@ if __name__ == '__main__':
             basic_keras(train, test)
         elif (option is 'nb-svm' or option is 'NB-SVM'):
             nb_svm(train, test)
-        elif (option is 'lstm_tune' or option is 'LSTM_tune' or options is 'LSTM_TUNE'):
+        elif (option is 'lstm_tune' or option is 'LSTM_tune' or option is 'LSTM_TUNE' or option is 'lstm-tune'):
             keras_batch_higher(train, test)
             keras_batch_lower(train, test)
             keras_epochs_higher(train, test)
