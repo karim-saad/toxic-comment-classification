@@ -28,9 +28,13 @@ def nb_svm(train, test):
 
     for count, class_name in enumerate(label_cols):
         print(f'Fit {class_name}')
-        m, r = get_mdl(train[class_name], x)
-        print(np.mean(cross_val_score(m, x, train[class_name])))
-        preds[:, count] = m.predict_proba(x_test.multiply(r))[:, 1]
+        #m, r = get_mdl(train[class_name], x)
+        #print(np.mean(cross_val_score(m, x, train[class_name])))
+        #preds[:, count] = m.predict_proba(x_test.multiply(r))[:, 1]
+        model, log_count_ratio = nblr(x, train[class_name])
+        print(np.mean(cross_val_score(model, x, train[class_name])))
+        preds[:, count] = model.predict_proba(
+            np.dot(x_test, log_count_ratio))[:, 1]
 
 
 def tokenize(s):
@@ -38,14 +42,26 @@ def tokenize(s):
     return re_tok.sub(r' \1 ', s).split()
 
 
-def pr(y_i, y, x):
-    p = x[y == y_i].sum(0)
-    return (p+1)/((y == y_i).sum()+1)
+def pr(x, y, y_i, alpha=1):
+    ''' Returns probability
+
+    Parameters
+    ---------
+    x : something something
+        Yeet i wanna try this
+
+    y : another random data type
+        Hey hey ``sexy stuff``
+    '''
+
+    p = x[y == y_i].sum(axis=0) + alpha
+    p_norm = (y == y_i).sum() + alpha
+    return p/p_norm
 
 
-def get_mdl(y, x):
+def nblr(x, y):
     y = y.values
-    r = np.log(pr(1, y, x)/pr(0, y, x))
-    m = LogisticRegression(C=4, dual=True, solver='liblinear', max_iter=1000)
-    x_nb = x.multiply(r)
-    return m.fit(x_nb, y), r
+    log_count_ratio = np.log(pr(x, y, 1) / pr(x, y, 0))
+    model = LogisticRegression(C=4, max_iter=500)
+    x_nb = np.dot(x, log_count_ratio)
+    return model.fit(x_nb, y), log_count_ratio
