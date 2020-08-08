@@ -19,19 +19,19 @@ if __name__ == '__main__':
         print('Explore, LSTM, NB-SVM, LSTM_tune')
         option = input('Choose your option: ')
 
-        if (option is 'Explore' or option is 'explore'):
+        if (option == 'Explore' or option == 'explore'):
             explore(train, test)
-        elif (option == 'lstm' or option is 'LSTM'):
+        elif (option == 'lstm' or option == 'LSTM'):
             basic_keras(train, test)
-        elif (option is 'nb-svm' or option is 'NB-SVM'):
+        elif (option == 'nb-svm' or option == 'NB-SVM'):
             nb_svm(train, test)
-        elif (option is 'lstm_tune' or option is 'LSTM_tune' or option is 'LSTM_TUNE' or option is 'lstm-tune'):
-            keras_batch_higher(train, test)
+        elif (option == 'lstm_tune' or option == 'LSTM_tune' or option == 'LSTM_TUNE' or option == 'lstm-tune'):
             keras_batch_lower(train, test)
             keras_epochs_higher(train, test)
             keras_epochs_lower(train, test)
             keras_validation_higher(train, test)
             keras_validation_lower(train, test)
             keras_bidirectional(train, test)
+            keras_batch_higher(train, test)
         else:
             print('Invalid option')

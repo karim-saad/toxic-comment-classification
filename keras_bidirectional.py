@@ -1,35 +1,35 @@
 import pandas as pd
+import os
 from keras_preprocessing.text import Tokenizer
 from keras_preprocessing.sequence import pad_sequences
 from keras.layers import Dense, Input, LSTM, Embedding, Dropout, Activation, GlobalMaxPool1D, Bidirectional
-from keras.models import Model
+from keras.models import Model, load_model
 from keras import initializers, regularizers, constraints, optimizers, layers
 
 
 def keras_bidirectional(train, test):
-    print('Bidirectional LSTM Model')
+    print('\nBidirectional LSTM Model')
 
     saved = input('Would you like to use a pretrained model? ')
     print('NOTE: If a model does not exist, a new model will be trained.')
 
-    if ((saved is 'yes' or saved is 'Yes' or saved is 'y' or saved is 'YES') and os.path.isfile('models/bidirectional_model')):
+    classes = list(train.columns)[2:]
+    y = train[classes].values
+
+    max_features = 2000
+    tokenizer = Tokenizer(num_words=max_features)
+    tokenizer.fit_on_texts(list(train['comment_text']))
+    tokenized_train = tokenizer.texts_to_sequences(train['comment_text'])
+    tokenized_test = tokenizer.texts_to_sequences(test['comment_text'])
+
+    max_length = 200
+    x_train = pad_sequences(tokenized_train, maxlen=max_length)
+    x_test = pad_sequences(tokenized_test, maxlen=max_length)
+
+    if ((saved == 'yes' or saved == 'Yes' or saved == 'y' or saved == 'YES') and os.path.isdir('models/bidirectional_model')):
         model = load_model('models/bidirectional_model')
     else:
-        classes = list(train.columns)[2:]
-        y = train[classes].values
-
-        max_features = 2000
-        tokenizer = Tokenizer(num_words=max_features)
-        tokenizer.fit_on_texts(list(train['comment_text']))
-        tokenized_train = tokenizer.texts_to_sequences(train['comment_text'])
-        tokenized_test = tokenizer.texts_to_sequences(test['comment_text'])
-
-        max_length = 200
-        x_train = pad_sequences(tokenized_train, maxlen=max_length)
-        x_test = pad_sequences(tokenized_test, maxlen=max_length)
         input_layer = Input(shape=(max_length, ))
-
-        embedding_size = 128
         x = Embedding(max_features, embedding_size)(input_layer)
         x = Bidirectional(
             LSTM(60, return_sequences=True, name='lstm_layer'))(x)
