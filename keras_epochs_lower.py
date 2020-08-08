@@ -7,6 +7,8 @@ from keras import initializers, regularizers, constraints, optimizers, layers
 
 
 def keras_epochs_lower(train, test):
+    print('LSTM Model with a lower number of epochs')
+
     classes = list(train.columns)[2:]
     y = train[classes].values
 

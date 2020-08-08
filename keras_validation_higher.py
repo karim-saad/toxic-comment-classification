@@ -6,8 +6,9 @@ from keras.models import Model
 from keras import initializers, regularizers, constraints, optimizers, layers
 
 
-def basic_keras(train, test):
-    print('Basic LSTM Model (Standard Parameters)')
+def keras_validation_higher(train, test):
+    print('LSTM Model with a higher validation split')
+
     classes = list(train.columns)[2:]
     y = train[classes].values
 
@@ -38,7 +39,7 @@ def basic_keras(train, test):
 
     loss, accuracy = model.evaluate(
         x_train, y, batch_size=batch_size, verbose=1)
-    model.save('models/basic_model')
+    model.save('models/validation_higher_model')
     print(f'Loss is {loss}')
     print(f'Accuracy is {accuracy}')
 
@@ -46,4 +47,4 @@ def basic_keras(train, test):
     sub = pd.DataFrame.from_dict({'id': test['id']})
     for count, class_name in enumerate(classes):
         sub[class_name] = y_test[:, count]
-    sub.to_csv('submissions/keras_submission_standard.csv')
+    sub.to_csv('submissions/keras_submission_validation_higher.csv')

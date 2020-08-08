@@ -7,6 +7,8 @@ from keras import initializers, regularizers, constraints, optimizers, layers
 
 
 def keras_epochs_higher(train, test):
+    print('LSTM Model with a higher number of epochs')
+
     classes = list(train.columns)[2:]
     y = train[classes].values
 

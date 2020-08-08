@@ -7,6 +7,8 @@ from keras import initializers, regularizers, constraints, optimizers, layers
 
 
 def keras_bidirectional(train, test):
+    print('Bidirectional LSTM Model')
+
     classes = list(train.columns)[2:]
     y = train[classes].values
 
