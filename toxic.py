@@ -16,6 +16,7 @@ if __name__ == '__main__':
     keras_validation_lower(train, test)
     keras_bidirectional(train, test)
 
+    option = 'mimi'
     while(option is not 'end'):
         print('\nOPTIONS')
         print('Explore, LSTM, NB-SVM, LSTM_tune')
