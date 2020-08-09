@@ -15,38 +15,15 @@ Run the code with the whichever command is appropriate to your system:
 
 This will unzip all datasets, and run our implemented analysis.
 
-**Note**: Running this file will require a graphical interface. If you are running on WSL, please install [**Xming**](https://sourceforge.net/projects/xming/), or a similar program.
+You will be presented with a few options;
 
-## References
-The following Kaggle notebooks are super helpful:
-
-- [**Naive Bayes - Support Vector Machine**](https://www.kaggle.com/jhoward/nb-svm-strong-linear-baseline)
-    - This notebook is very concise
-    - Mainly deals with the actual implementation
-    - Builds the model and prepares the submission file
-- [**Exploratory Data Analysis**](https://www.kaggle.com/jagangupta/stop-the-s-toxic-comments-eda)
-    - This notebook is much more lengthy
-    - Explores the dataset, with some preparation
-    - Very useful to justify our results
-    - Also includes feature engineering
-- [**Tackling Toxic using Keras**](https://www.kaggle.com/sbongo/for-beginners-tackling-toxic-using-keras)
-    - This notebook is also quite lengthy
-    - It goes through the solution using Keras and Tensorflow
-    - Contains a few nice pictures and diagrams
-- [**Logistic Regression**](https://www.kaggle.com/tunguz/logistic-regression-with-words-and-char-n-grams)
-    - This notebook is very concise
-    - Purely just code for the submission
-- [**Improved LSTM Baseline**](https://www.kaggle.com/jhoward/improved-lstm-baseline-glove-dropout)
-    - This notebook is made by the same user as **NB-SVM model**
-    - Very similar to **Keras** model
-
-## Report
-The report is currently located [**here**](https://docs.google.com/document/d/1sUgoUPmcV7uHLe_XSr5kLB20RkgOK5ALO-yAvKfBWUk/edit?usp=sharing) on Google Drive.
-
-## TO DO
 - Exploratory Data Analysis
-- Preprocessing + Feature engineering
-- Basic Keras model
-- Basic logistic regression
-- NB-SVM model
-- Improve on NB-SVM model
+- LSTM
+- NB-SVM
+- LSTM Tuning Parameters
+
+Please input which option you would like to run.
+**Note**: LSTM models will take a significant amount of time to train, so pretrained models have been provided. When prompted, if you wish to use these models, please input 'yes'.
+**Warning**: If you don't use these pretrained models, it may take up 20 minutes to run the code.
+
+**Note**: Running this file will require a graphical interface. If you are running on WSL, please install [**Xming**](https://sourceforge.net/projects/xming/), or a similar program.
