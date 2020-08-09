@@ -26,12 +26,12 @@ if __name__ == '__main__':
         elif (option == 'nb-svm' or option == 'NB-SVM'):
             nb_svm(train, test)
         elif (option == 'lstm_tune' or option == 'LSTM_tune' or option == 'LSTM_TUNE' or option == 'lstm-tune'):
-            keras_batch_lower(train, test)
-            keras_epochs_higher(train, test)
-            keras_epochs_lower(train, test)
             keras_validation_higher(train, test)
             keras_validation_lower(train, test)
             keras_bidirectional(train, test)
             keras_batch_higher(train, test)
+            keras_batch_lower(train, test)
+            keras_epochs_higher(train, test)
+            keras_epochs_lower(train, test)
         else:
             print('Invalid option')
